@@ -49,7 +49,7 @@ unsigned int fbgl_pxlget( struct framebuffer *fb, unsigned int x, unsigned int y
 
 // Fill the framebuffer fb with colour value RGBA.
 void fbgl_fillscreen( struct framebuffer *fb, unsigned int RGBA) {
-    int i;
+    unsigned int i;
     for( i = 0; i < fb->size / 4; i++)
         *(fb->ptr + i) = RGBA;
 }

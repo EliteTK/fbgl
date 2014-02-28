@@ -1,0 +1,14 @@
+#ifndef FBGL_COLOURS
+#define FBGL_COLOURS
+#define C_RED 16711680
+#define C_GREEN 65280
+#define C_BLUE 255
+#define C_WHITE 16777215
+#define C_BLACK 0
+#define C_GRAY 8355711
+#define C_CYAN 16776960
+#define C_MAGENTA 16711935
+#define C_YELLOW 16776960
+
+#define fbgl_colour( R, G, B, A ) ((unsigned int)((unsigned char)(A) << 24 | (unsigned char)(R) << 16 | (unsigned char)(G) << 8 | (unsigned char)(B)))
+#endif

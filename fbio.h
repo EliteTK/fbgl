@@ -10,11 +10,11 @@ struct framebuffer {
     long size;
 };
 
-int fbgl_open( struct framebuffer *, char * );
-void fbgl_close( struct framebuffer * );
+int fbgl_open( struct framebuffer *, const char * );
+void fbgl_close( const struct framebuffer * );
 
-void fbgl_pxlset( struct framebuffer *, unsigned int, unsigned int, unsigned int);
-unsigned int fbgl_pxlget( struct framebuffer *, unsigned int, unsigned int );
+void fbgl_pxlset( const struct framebuffer *, const unsigned int, const unsigned int, const unsigned int);
+unsigned int fbgl_pxlget( const struct framebuffer *, const unsigned int, const unsigned int );
 
-void fbgl_fillscreen( struct framebuffer *, unsigned int);
+void fbgl_fillscreen( const struct framebuffer *, const unsigned int);
 #endif

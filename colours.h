@@ -11,4 +11,9 @@
 #define C_YELLOW 16776960
 
 #define fbgl_colour( R, G, B, A ) ((unsigned int)((unsigned char)(A) << 24 | (unsigned char)(R) << 16 | (unsigned char)(G) << 8 | (unsigned char)(B)))
+
+#define fbgl_getR(C) ((C) >> 16 & 255)
+#define fbgl_getG(C) ((C) >> 8 & 255)
+#define fbgl_getB(C) ((C) & 255)
+#define fbgl_getA(C) ((C) >> 24 & 255)
 #endif

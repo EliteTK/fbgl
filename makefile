@@ -3,7 +3,7 @@ CC=gcc
 CFLAGS=-O2
 
 all:
-	$(CC) $(CFLAGS) *.c -o colours.out
+	$(CC) $(CFLAGS) test.c fbio.c shapes.c -o colours.out
 
 clean:
 	rm -f colours.out *.out

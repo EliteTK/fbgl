@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include"fbio.h"
 #include"colours.h"
+#include"shapes.h"
 
 int main( int argc, char *argv[] ) {
     struct framebuffer *fb = malloc(sizeof(struct framebuffer));
@@ -22,11 +23,16 @@ int main( int argc, char *argv[] ) {
 //        }
 //    }
     unsigned int col = fbgl_colour( 13, 123, 55, 0 );
-    printf("Colourvalue %u\n", col);
     fbgl_fillscreen( fb, col );
-    fbgl_fillrect( fb, 0, 0, 200, 200, C_RED );
-    fbgl_fillrect( fb, 0, 0, 100, 100, C_GREEN );
-    fbgl_fillrect( fb, 100, 100, 200, 200, C_BLUE );
+//    fbgl_fillrect( fb, 0, 0, 200, 200, C_RED );
+//    fbgl_fillrect( fb, 0, 0, 100, 100, C_GREEN );
+//    fbgl_fillrect( fb, 100, 100, 200, 200, C_BLUE );
+
+    Point2D ap0 = { 10, 10 }, ap1 = { 510, 10 }, ap2 = { 510, 510 };
+    Point2D bp0 = { 10, 10 }, bp1 = { 510, 510 }, bp2 = { 10, 510 };
+    int colours[] = { C_RED, C_GREEN, C_BLUE };
+    fbgl_drawtri( fb, &ap0, &ap1, &ap2, colours );
+    fbgl_drawtri( fb, &bp0, &bp1, &bp2, colours );
 
     sleep(10);
     fbgl_close( fb );

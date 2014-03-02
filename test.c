@@ -22,8 +22,7 @@ int main( int argc, char *argv[] ) {
 //            fbgl_pxlset( fb, pos, (char *)col );
 //        }
 //    }
-    unsigned int col = fbgl_colour( 13, 123, 55, 0 );
-    fbgl_fillscreen( fb, col );
+    fbgl_fillscreen( fb, fbgl_colour( 13, 123, 55, 0 ) );
 //    fbgl_fillrect( fb, 0, 0, 200, 200, C_RED );
 //    fbgl_fillrect( fb, 0, 0, 100, 100, C_GREEN );
 //    fbgl_fillrect( fb, 100, 100, 200, 200, C_BLUE );

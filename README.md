@@ -1,11 +1,14 @@
-ABANDONED
-=========
+About
+=====
 
-This is an abandoned project.
+This is a "crappy" (depends on your definition) frame buffer graphics library.
 
-This is a project which I wrote to explore the linux framebuffer. I wrote a simple graphics engine after "conquering" the framebuffer.
-The "engine" provides the ability to draw squares circles and triangles.
+We will see how far it goes but at the moment it allows for filling the screen with a variety of colours. It allows for circles of different colours, squares and rectangles (of different colours) and triangles which barycentrically interpolate across a set of colours.
 
-This project was abandoned once it was clear that the base was written badly. It might once be resurrected but for now my time is better served learning about more conventional display methods.
+For the future:
+---------------
+I hope to make the drawing process multi-threaded to see if I can speed up the ridiculous 100 clock cycles required to send a single piece of data to the framebuffer. I also hope to add 3D functionality.
 
-One final message: My friend framebuffer, you will be sincerely missed.
+Right now:
+----------
+Right now I am working on rewriting the current code to look less terrible and work slightly better. This also includes redoing the folder structure and making a good looking make file which allows for quite a few more things.

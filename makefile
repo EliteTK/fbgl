@@ -1,13 +1,24 @@
 # makefile
 CC=gcc
-CFLAGS=-O2
-LIBS=lib/*.c
+CFLAGS=-v -O2 -Wall -Werror
+LIBPATH=$(CURDIR)/lib
+LIBSS=$(LIBPATH)/*.c
+LIBSO=$(LIBPATH)/*.o
+RPATH=$(LIBPATH)
 
-test:
-	$(CC) $(CFLAGS) $(LIBS) test.c -o test.out
+test.c: libs
+	$(CC) $(CFLAGS) -L$(LIBPATH) -Wl,-rpath=$(RPATH) $@ -o $(@:.c=.out) -lfbgl
 
-heart:
-	$(CC) $(CFLAGS) $(LIBS) heart.c -o heart.out
+heart.c: libs
+	$(CC) $(CFLAGS) -L$(LIBPATH) -Wl,-rpath=$(RPATH) $@ -o $(@:.c=.out) -lfbgl
+
+libs:
+	$(CC) -c $(CFLAGS) -fPIC $(LIBSS)
+	$(CC) -shared -o libfbgl.so $(LIBSO)
+	mv libfbgl.so $(LIBPATH)
+
+cleanlib: clean
+	rm -f *.so
 
 clean:
-	rm -f *.out
+	rm -f *.out *.o

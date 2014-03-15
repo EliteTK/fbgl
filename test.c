@@ -50,19 +50,22 @@ int main( int argc, char *argv[] ) {
     /*fbgl_drawcir( fb, &bcp, 50, C_RED );*/
 
     Point2D atp = { 10, 10 }, btp = { 210, 10 }, ctp = { 110, 110 };
-    int colours[] = { C_BLUE, C_BLUE, C_BLUE };
+    unsigned int colours[] = { C_BLUE, C_BLUE, C_BLUE };
 
     int i;
     for( i = 0; i < 600; i++ ) {
         pincr( &atp );
         pincr( &btp );
         pincr( &ctp );
-        fbgl_fillscreen( fb, fbgl_colour( 13, 123, 55, 0 ) );
+        int del;
+        for(del = 0; del < 1; del++) {
+            fbgl_fillscreen( fb, fbgl_colour( 13, 123, 55, 0 ) );
+        }
         fbgl_drawtri( fb, &atp, &btp, &ctp, colours );
+        fbgl_draw( fb );
     }
-
-    sleep(10);
     fbgl_close( fb );
+    return 0;
 }
 
 void pincr( Point2D *p ) {

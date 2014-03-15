@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<unistd.h>
 #include"lib/fbio.h"
 #include"lib/colours.h"
 #include"lib/shapes.h"
@@ -15,7 +16,7 @@ int main( int argc, char *argv[] ) {
 
     Point2D acp = { 60, 60 }, bcp = { 160, 60 };
     Point2D atp = { 60-44, 60+24 }, btp = { 110, 60 }, ctp = { 110, 260 }, dtp = { 160+44, 60+24 };
-    int colours[] = { C_RED, C_RED, C_RED };
+    unsigned int colours[] = { C_RED, C_RED, C_RED };
 
     fbgl_drawtri( fb, &atp, &btp, &ctp, colours );
     fbgl_drawtri( fb, &btp, &dtp, &ctp, colours );
@@ -23,7 +24,10 @@ int main( int argc, char *argv[] ) {
     fbgl_drawcir( fb, &acp, 50, C_RED );
     fbgl_drawcir( fb, &bcp, 50, C_RED );
 
+    fbgl_draw( fb );
+
     sleep(10);
     fbgl_close( fb );
+    return 0;
 }
 

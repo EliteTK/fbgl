@@ -23,12 +23,15 @@ build : ${LIB}/${SONAME}
 	
 
 ${LIB}/${SONAME} : ${BUILD}/fbio.o ${BUILD}/shapes.o
+	mkdir -p ${LIB}
 	${CC} -shared $^ -o $@
 
 ${BUILD}/fbio.o : ${SRC}/fbio.c ${INCLL}/fbio.h
+	mkdir -p ${BUILD}
 	${CC} ${CFLAGS} $< -o $@
 
 ${BUILD}/shapes.o : ${SRC}/shapes.c ${INCLL}/fbio.h ${INCLL}/colours.h ${INCLL}/shapes.h
+	mkdir -p ${BUILD}
 	${CC} ${CFLAGS} $< -o $@
 
 install : ${INSLIB}/${SONAME}
@@ -44,5 +47,6 @@ uninstall :
 
 clean :
 	rm -f ${BUILD}/* ${LIB}/*
+	rm -fd ${BUILD} ${LIB}
 
 auto : build install clean

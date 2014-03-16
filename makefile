@@ -39,7 +39,7 @@ install : ${DESTLIB}/${SONAME}
 
 ${DESTLIB}/${SONAME} : ${LIB}/${SONAME}
 	mkdir -p ${DESTLIB}
-	mkdir -p ${INCL}
+	mkdir -p ${DESTINCL}
 	cp ${LIB}/${SONAME} ${DESTLIB}/${SONAME}
 	cp -r ${INCL}/* ${DESTINCL}/
 

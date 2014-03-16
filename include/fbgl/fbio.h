@@ -4,7 +4,7 @@
 
 struct framebuffer {
     int filedesc;
-    int *ptr;
+    unsigned int *ptr;
     struct fb_var_screeninfo vinfo;
     struct fb_fix_screeninfo finfo;
     long size;

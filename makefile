@@ -1,13 +1,48 @@
 # makefile
-CC=gcc
-CFLAGS=-O2
-LIBS=lib/*.c
+CC = gcc
 
-test:
-	$(CC) $(CFLAGS) $(LIBS) test.c -o test.out
+CFLAGS = -c -O2 -Wall -Werror -fPIC -I ${INCLL}
 
-heart:
-	$(CC) $(CFLAGS) $(LIBS) heart.c -o heart.out
+SOOUT = libfbgl.so
 
-clean:
-	rm -f *.out
+SOVER = 
+SONAME = ${SOOUT}${SOVER}
+
+LOCALPATH = .
+INCL = ${LOCALPATH}/include
+INCLL = ${INCL}/fbgl
+SRC = ${LOCALPATH}/src
+BUILD = ${LOCALPATH}/build
+LIB = ${LOCALPATH}/lib
+
+INSPATH = /usr
+INSINCL = ${INSPATH}/include
+INSLIB = ${INSPATH}/lib
+
+build : ${LIB}/${SONAME}
+	
+
+${LIB}/${SONAME} : ${BUILD}/fbio.o ${BUILD}/shapes.o
+	${CC} -shared $^ -o $@
+
+${BUILD}/fbio.o : ${SRC}/fbio.c ${INCLL}/fbio.h
+	${CC} ${CFLAGS} $< -o $@
+
+${BUILD}/shapes.o : ${SRC}/shapes.c ${INCLL}/fbio.h ${INCLL}/colours.h ${INCLL}/shapes.h
+	${CC} ${CFLAGS} $< -o $@
+
+install : ${INSLIB}/${SONAME}
+	
+
+${INSLIB}/${SONAME} : ${LIB}/${SONAME}
+	cp ${LIB}/${SONAME} ${INSLIB}/${SONAME}
+	cp -r ${INCL}/* ${INSINCL}/
+
+uninstall :
+	rm -f ${INSLIB}/${SONAME} ${INSINCL}/fbgl.h ${INSINCL}/fbgl/*
+	rm -fd ${INSINCL}/fbgl/
+
+clean :
+	rm -f ${BUILD}/* ${LIB}/*
+
+auto : build install clean

@@ -2,6 +2,8 @@
 #include<fcntl.h>
 #include<linux/fb.h>
 #include<sys/mman.h>
+#include<unistd.h>
+#include<stropts.h>
 #include"fbio.h"
 
 // Open framebuffer located at path and set fb to the information needed to reference it

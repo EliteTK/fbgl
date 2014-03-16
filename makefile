@@ -8,16 +8,16 @@ SOOUT = libfbgl.so
 SOVER = 
 SONAME = ${SOOUT}${SOVER}
 
-LOCALDIR = .
-INCL = ${LOCALDIR}/include
+LOCALPATH = .
+INCL = ${LOCALPATH}/include
 INCLL = ${INCL}/fbgl
-SRC = ${LOCALDIR}/src
-BUILD = ${LOCALDIR}/build
-LIB = ${LOCALDIR}/lib
+SRC = ${LOCALPATH}/src
+BUILD = ${LOCALPATH}/build
+LIB = ${LOCALPATH}/lib
 
-DESTDIR = /usr
-DESTINCL = ${DESTDIR}/include
-DESTLIB = ${DESTDIR}/lib
+INSPATH = /usr
+INSINCL = ${INSPATH}/include
+INSLIB = ${INSPATH}/lib
 
 build : ${LIB}/${SONAME}
 	
@@ -34,21 +34,17 @@ ${BUILD}/shapes.o : ${SRC}/shapes.c ${INCLL}/fbio.h ${INCLL}/colours.h ${INCLL}/
 	mkdir -p ${BUILD}
 	${CC} ${CFLAGS} $< -o $@
 
-install : ${DESTLIB}/${SONAME}
+install : ${INSLIB}/${SONAME}
 	
 
-${DESTLIB}/${SONAME} : ${LIB}/${SONAME}
-	mkdir -p ${DESTLIB}
-	mkdir -p ${DESTINCL}
-	cp ${LIB}/${SONAME} ${DESTLIB}/${SONAME}
-	cp -r ${INCL}/* ${DESTINCL}/
+${INSLIB}/${SONAME} : ${LIB}/${SONAME}
+	cp ${LIB}/${SONAME} ${INSLIB}/${SONAME}
+	cp -r ${INCL}/* ${INSINCL}/
 
 uninstall :
-	rm -f ${DESTLIB}/${SONAME} ${DESTINCL}/fbgl.h ${DESTINCL}/fbgl/*
-	rm -fd ${DESTINCL}/fbgl/
+	rm -f ${INSLIB}/${SONAME} ${INSINCL}/fbgl.h ${INSINCL}/fbgl/*
+	rm -fd ${INSINCL}/fbgl/
 
 clean :
 	rm -f ${BUILD}/* ${LIB}/*
 	rm -fd ${BUILD} ${LIB}
-
-auto : build install clean

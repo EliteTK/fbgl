@@ -38,6 +38,8 @@ install : ${DESTLIB}/${SONAME}
 	
 
 ${DESTLIB}/${SONAME} : ${LIB}/${SONAME}
+	mkdir -p ${DESTLIB}
+	mkdir -p ${INCL}
 	cp ${LIB}/${SONAME} ${DESTLIB}/${SONAME}
 	cp -r ${INCL}/* ${DESTINCL}/
 

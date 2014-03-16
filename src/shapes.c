@@ -81,3 +81,4 @@ void fbgl_drawcir( const struct framebuffer *fb, const Point2D *centre,
                 fbgl_pxlset( fb, p.x, p.y, RGBA );
 
 }
+

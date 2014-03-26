@@ -1,5 +1,5 @@
-#ifndef FBGL_COLOURS
-#define FBGL_COLOURS
+#ifndef __FBGL_COLOURS
+
 #define C_RED 16711680
 #define C_GREEN 65280
 #define C_BLUE 255
@@ -16,4 +16,6 @@
 #define fbgl_getG(C) ((C) >> 8 & 255)
 #define fbgl_getB(C) ((C) & 255)
 #define fbgl_getA(C) ((C) >> 24 & 255)
+
+#define __FBGL_COLOURS
 #endif

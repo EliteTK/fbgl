@@ -1,5 +1,5 @@
-#ifndef FBGL_FBIO
-#define FBGL_FBIO
+#ifndef __FBGL_FBIO
+
 #include<linux/fb.h>
 
 struct framebuffer {
@@ -19,4 +19,6 @@ void fbgl_draw( const struct framebuffer * );
 unsigned int fbgl_pxlget( const struct framebuffer *, const unsigned int, const unsigned int );
 
 void fbgl_fillscreen( const struct framebuffer *, const unsigned int);
+
+#define __FBGL_FBIO
 #endif

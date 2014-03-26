@@ -9,14 +9,16 @@
 
 int orient2d( const Point2D *, const Point2D *, const Point2D * );
 
-void fbgl_fillrect( const struct framebuffer *fb, const unsigned int sx, const unsigned int sy, const unsigned int ex, const unsigned int ey, const unsigned int RGBA ) {
+void fbgl_fillrect( const struct framebuffer *fb, const unsigned int sx, const unsigned int sy, const unsigned int ex, const unsigned int ey, const unsigned int RGBA )
+{
     int x, y;
     for ( x = min(sx, ex); x <= max(sx, ex); x++ )
         for ( y = min(sy, ey); y <= max(sy, ey); y++ )
             fbgl_pxlset( fb, x, y, RGBA );
 }
 
-void fbgl_drawtri( const struct framebuffer *fb, const Point2D *v0, const Point2D *v1, const Point2D *v2, const unsigned int *colours ) {
+void fbgl_drawtri( const struct framebuffer *fb, const Point2D *v0, const Point2D *v1, const Point2D *v2, const unsigned int *colours )
+{
     // AABB
     int minx = min3(v0->x, v1->x, v2->x);
     int miny = min3(v0->y, v1->y, v2->y);
@@ -60,14 +62,16 @@ void fbgl_drawtri( const struct framebuffer *fb, const Point2D *v0, const Point2
         }
 }
 
-int orient2d( const Point2D *a, const Point2D *b, const Point2D *c ) {
+int orient2d( const Point2D *a, const Point2D *b, const Point2D *c )
+{
     return ( b->x - a->x ) * ( c->y - a->y ) - ( b->y - a->y ) * ( c->x - a->x );
 }
 
 #define pow2( A ) ((A) * (A))
 
 void fbgl_drawcir( const struct framebuffer *fb, const Point2D *centre,
-                   const int radius, const unsigned int RGBA ) {
+                   const int radius, const unsigned int RGBA )
+{
     int minx = centre->x - radius;
     int miny = centre->y - radius;
     int maxx = centre->x + radius;
